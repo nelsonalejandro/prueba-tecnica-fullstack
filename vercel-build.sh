@@ -16,4 +16,9 @@ cd backend && npm run build && cd ..
 echo "Compilando frontend..."
 cd frontend && npm run build && cd ..
 
+# Crear directorio build en la raíz para Vercel
+echo "Preparando directorio de salida..."
+mkdir -p build
+cp -r frontend/build/* build/
+
 echo "Build completado exitosamente!" 
