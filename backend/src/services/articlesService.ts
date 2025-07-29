@@ -209,6 +209,6 @@ export class ArticlesService {
   }
 }
 
-// Solo crear instancia si no estamos en modo test
-const isTest = process.env.NODE_ENV === 'test';
-export default isTest ? null : new ArticlesService(); 
+// Crear instancia del servicio
+const articlesService = new ArticlesService();
+export default articlesService; 
