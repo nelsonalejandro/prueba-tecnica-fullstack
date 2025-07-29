@@ -1,0 +1,52 @@
+[
+  {
+    "country": "Chile",
+    "rate": 850.5,
+    "currency": "CLP"
+  },
+  {
+    "country": "Argentina",
+    "rate": 350.25,
+    "currency": "ARS"
+  },
+  {
+    "country": "México",
+    "rate": 17.85,
+    "currency": "MXN"
+  },
+  {
+    "country": "Colombia",
+    "rate": 3950.75,
+    "currency": "COP"
+  },
+  {
+    "country": "Perú",
+    "rate": 3.75,
+    "currency": "PEN"
+  },
+  {
+    "country": "Brasil",
+    "rate": 4.95,
+    "currency": "BRL"
+  },
+  {
+    "country": "Uruguay",
+    "rate": 38.45,
+    "currency": "UYU"
+  },
+  {
+    "country": "Ecuador",
+    "rate": 1.0,
+    "currency": "USD"
+  },
+  {
+    "country": "Bolivia",
+    "rate": 6.95,
+    "currency": "BOB"
+  },
+  {
+    "country": "Paraguay",
+    "rate": 7200.0,
+    "currency": "PYG"
+  }
+] 
