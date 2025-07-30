@@ -1,31 +1,12 @@
 # Prueba Técnica Fullstack - React + Node.js
 
-Aplicación web responsiva para mostrar un listado de artículos con funcionalidades de ordenamiento, búsqueda, filtrado y edición.
+Aplicación web para mostrar y gestionar un listado de artículos, con funcionalidades de búsqueda, filtrado, edición y exportación.
 
-## 🚀 Características
+## ¿En qué consiste el proyecto?
 
-### Frontend (React + TypeScript)
-- ✅ Listado de artículos con virtualización (soporte 10.000 artículos)
-- ✅ Ordenamiento por fecha y monto
-- ✅ Búsqueda por país o nombre
-- ✅ Filtrado por estado
-- ✅ Edición inline de nombre y monto
-- ✅ Advertencias visuales para inconsistencias
-- ✅ Interfaz responsiva
-- ✅ Modo oscuro/claro (bonus)
-
-### Backend (Node.js + TypeScript)
-- ✅ API REST para artículos procesados
-- ✅ Desencriptación de nombres
-- ✅ Lógica de negocio para estados
-- ✅ Cálculo de montos en USD
-- ✅ Validaciones de datos
-- ✅ Seguridad implementada
-
-### Pruebas
-- ✅ Pruebas unitarias en backend
-- ✅ Pruebas de integración en frontend
-- ✅ Pruebas end-to-end (bonus)
+- **Frontend:** React + TypeScript, Material-UI, React Query, virtualización de listas, edición inline, modo oscuro, exportación a CSV, pruebas unitarias y e2e.
+- **Backend:** Node.js + TypeScript, API REST, lógica de negocio, desencriptación, validaciones, seguridad, pruebas unitarias.
+- **Datos de prueba:** 10.000 artículos y tasas de cambio.
 
 ## 📁 Estructura del Proyecto
 
@@ -70,7 +51,7 @@ npm install
 cd backend
 npm run dev          # Desarrollo
 npm run build        # Build para producción
-npm start           # Ejecutar en producción
+npm start            # Ejecutar en producción
 ```
 
 ### Frontend
@@ -89,6 +70,29 @@ cd backend && npm run dev
 cd frontend && npm start
 ```
 
+## 🔧 Configuración de variables de entorno
+
+### Backend (`backend/.env`):
+```env
+PORT=3001
+NODE_ENV=development
+ENCRYPTION_KEY=tu-clave-de-encriptacion
+```
+
+### Frontend (`frontend/.env`):
+```env
+REACT_APP_API_URL=http://localhost:3001/api
+```
+
+> Asegúrate de crear el archivo `.env` en cada carpeta y de reiniciar el servidor tras cualquier cambio.
+
+## 📱 Uso de la Aplicación
+
+1. Accede a [http://localhost:3000](http://localhost:3000)
+2. Usa los filtros, búsqueda y ordenamiento en la tabla de artículos.
+3. Edita nombre y monto haciendo clic en las celdas correspondientes.
+4. Exporta los datos filtrados a CSV con el botón correspondiente.
+
 ## 🧪 Pruebas
 
 ### Backend
@@ -105,74 +109,12 @@ npm test            # Ejecutar pruebas unitarias
 npm run test:e2e    # Ejecutar pruebas e2e (si están configuradas)
 ```
 
-## 📊 Datos de Prueba
-
-El proyecto incluye:
-- `backend/data/articles.json` - 10.000 registros de artículos
-- `backend/data/exchange-rates.json` - Tasas de cambio por país
-
-## 🔧 Configuración
-
-### Variables de Entorno
-
-**Backend (.env)**
-```env
-PORT=3001
-NODE_ENV=development
-ENCRYPTION_KEY=tu-clave-de-encriptacion
-```
-
-**Frontend (.env)**
-```env
-REACT_APP_API_URL=http://localhost:3001/api
-```
-
-## 📱 Uso de la Aplicación
-
-1. **Acceso**: Abrir http://localhost:3000
-2. **Navegación**: 
-   - Usar los controles de ordenamiento en los headers de columna
-   - Utilizar la barra de búsqueda para filtrar por país o nombre
-   - Seleccionar estados en el filtro de estado
-   - Hacer clic en celdas para editar nombre y monto
-3. **Exportación**: Usar el botón "Exportar CSV" para descargar datos filtrados
-
-## 🏗️ Arquitectura
-
-### Backend
-- **Framework**: Express.js con TypeScript
-- **Validación**: Joi
-- **Encriptación**: crypto-js
-- **Pruebas**: Jest
-
-### Frontend
-- **Framework**: React 18 con TypeScript
-- **Estado**: React Query + Context API
-- **UI**: Material-UI o Tailwind CSS
-- **Virtualización**: react-window
-- **Pruebas**: React Testing Library + Jest
-
-## 🔒 Seguridad
-
-- Nombres encriptados en el backend
-- Validación de datos en ambos extremos
-- Sanitización de inputs
-- Headers de seguridad configurados
-
-## 📈 Rendimiento
-
-- Virtualización para listas grandes
-- Lazy loading de componentes
-- Optimización de re-renders
-- Caching con React Query
-
 ## 🤝 Contribución
 
-1. Fork el proyecto
-2. Crear una rama para tu feature
-3. Commit tus cambios
-4. Push a la rama
-5. Abrir un Pull Request
+1. Haz fork del proyecto
+2. Crea una rama para tu feature
+3. Commit y push de tus cambios
+4. Abre un Pull Request
 
 ## 📄 Licencia
 

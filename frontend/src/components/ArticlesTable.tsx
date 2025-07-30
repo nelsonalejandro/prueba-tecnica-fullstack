@@ -32,6 +32,7 @@ interface ArticlesTableProps {
   page: number;
   limit: number;
   onPageChange: (page: number) => void;
+  onRowsPerPageChange: (limit: number) => void;
 }
 
 interface EditableCellProps {
@@ -95,6 +96,7 @@ const ArticlesTable: React.FC<ArticlesTableProps> = ({
   page,
   limit,
   onPageChange,
+  onRowsPerPageChange,
 }) => {
   const updateArticleMutation = useUpdateArticle();
 
@@ -209,6 +211,7 @@ const ArticlesTable: React.FC<ArticlesTableProps> = ({
         page={page - 1}
         onPageChange={(_, newPage) => onPageChange(newPage + 1)}
         rowsPerPage={limit}
+        onRowsPerPageChange={e => onRowsPerPageChange(Number(e.target.value))}
         rowsPerPageOptions={[25, 50, 100]}
         labelDisplayedRows={({ from, to, count }) =>
           `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`
@@ -219,4 +222,4 @@ const ArticlesTable: React.FC<ArticlesTableProps> = ({
   );
 };
 
-export default ArticlesTable; 
+export default ArticlesTable;

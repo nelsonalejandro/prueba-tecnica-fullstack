@@ -49,6 +49,9 @@
     "testMatch": [
       "**/__tests__/**/*.test.ts"
     ],
+    "setupFiles": [
+      "<rootDir>/__tests__/jest.setup.js"
+    ],
     "collectCoverageFrom": [
       "src/**/*.ts",
       "!src/**/*.d.ts"

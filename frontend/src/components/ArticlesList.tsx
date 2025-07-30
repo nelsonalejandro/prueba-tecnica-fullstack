@@ -61,6 +61,11 @@ const ArticlesList: React.FC = () => {
     setFilters(prev => ({ ...prev, page: newPage }));
   };
 
+  // Añadir handler para cambio de filas por página
+  const handleRowsPerPageChange = (newLimit: number) => {
+    setFilters(prev => ({ ...prev, limit: newLimit, page: 1 }));
+  };
+
   if (error) {
     return (
       <Container maxWidth="xl" sx={{ mt: 4 }}>
@@ -121,6 +126,7 @@ const ArticlesList: React.FC = () => {
             page={articlesData.page}
             limit={articlesData.limit}
             onPageChange={handlePageChange}
+            onRowsPerPageChange={handleRowsPerPageChange}
           />
         ) : (
           <Box 

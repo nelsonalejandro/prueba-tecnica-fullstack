@@ -3,13 +3,21 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ArticlesList from '../components/ArticlesList';
-import { ArticleStatus } from '../../shared/types';
+import { ArticleStatus } from '../types';
 
 // Mock de los hooks
 jest.mock('../hooks/useArticles', () => ({
   useArticles: jest.fn(),
   useStatistics: jest.fn(),
   useExportCSV: jest.fn(),
+  useUpdateArticle: jest.fn(() => ({
+    mutate: jest.fn(),
+    isLoading: false,
+    isError: false,
+    isSuccess: false,
+    error: null,
+    reset: jest.fn(),
+  })),
 }));
 
 // Mock del contexto del tema
@@ -127,8 +135,9 @@ describe('ArticlesList', () => {
 
     await waitFor(() => {
       expect(screen.getByText('2')).toBeInTheDocument(); // Total de artículos
-      expect(screen.getByText('Pendiente')).toBeInTheDocument();
-      expect(screen.getByText('Inválido')).toBeInTheDocument();
+      // Usar getAllByText para evitar error de duplicados
+      expect(screen.getAllByText('Pendiente').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Inválido').length).toBeGreaterThan(0);
     });
   });
 
@@ -210,8 +219,8 @@ describe('ArticlesList', () => {
 
     renderWithProviders(<ArticlesList />);
 
-    // El botón de tema debería estar presente (icono de sol o luna)
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    // Buscar el botón por aria-label específico
+    expect(screen.getByLabelText('Cambiar a modo oscuro')).toBeInTheDocument();
   });
 
   it('debería mostrar información de paginación', () => {
