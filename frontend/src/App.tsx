@@ -63,13 +63,13 @@ function App() {
 
 function AppContent() {
   const { isDarkMode } = useTheme();
-  
+
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <CssBaseline />
-      <div className="App">
+      <div className="App" data-theme={isDarkMode ? 'dark' : 'light'}>
         <ArticlesList />
-        <Toaster 
+        <Toaster
           position="top-right"
           toastOptions={{
             duration: 4000,
