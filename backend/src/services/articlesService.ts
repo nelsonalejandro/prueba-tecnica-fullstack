@@ -9,7 +9,12 @@ export class ArticlesService {
   private encryptionKey: string;
 
   constructor() {
-    this.encryptionKey = process.env.ENCRYPTION_KEY || 'prueba-tecnica-2024';
+    if (!process.env.ENCRYPTION_KEY) {
+      console.error('❌ ERROR: Falta la variable de entorno ENCRYPTION_KEY.');
+      process.exit(1); // Detiene la aplicación
+    }
+
+    this.encryptionKey = process.env.ENCRYPTION_KEY;
     this.loadData();
   }
 

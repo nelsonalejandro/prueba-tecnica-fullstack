@@ -3,7 +3,7 @@ const path = require('path');
 const CryptoJS = require('crypto-js');
 
 // Configuración
-const ENCRYPTION_KEY = 'prueba-tecnica-2024';
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
 const COUNTRIES = ['Chile', 'Argentina', 'México', 'Colombia', 'Perú', 'Brasil', 'Uruguay', 'Ecuador', 'Bolivia', 'Paraguay'];
 const AGENTS = ['XYZ', 'ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQR', 'STU', 'VWX', 'YZA'];
 const NAMES = [

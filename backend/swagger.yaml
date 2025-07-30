@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+  title: API de Artículos
+  version: 1.0.0
+  description: API para gestión y consulta de artículos
+
+servers:
+  - url: http://localhost:3001/api
+
+paths:
+  /articles:
+    get:
+      summary: Obtener listado de artículos
+      parameters:
+        - in: query
+          name: search
+          schema: { type: string }
+          description: Búsqueda por nombre
+        - in: query
+          name: status
+          schema: { type: string, enum: [Pendiente, Completado, Inválido, Excluido] }
+        - in: query
+          name: sortBy
+          schema: { type: string, enum: [date, originalAmount] }
+        - in: query
+          name: sortOrder
+          schema: { type: string, enum: [asc, desc] }
+        - in: query
+          name: page
+          schema: { type: integer, minimum: 1 }
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 1, maximum: 1000 }
+      responses:
+        '200':
+          description: Lista de artículos
+        '400':
+          description: Parámetros inválidos
+
+  /articles/{id}:
+    get:
+      summary: Obtener artículo por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Artículo encontrado
+        '404':
+          description: Artículo no encontrado
+
+    put:
+      summary: Actualizar artículo por ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                originalAmount:
+                  type: number
+      responses:
+        '200':
+          description: Artículo actualizado
+        '400':
+          description: Datos inválidos
+        '404':
+          description: Artículo no encontrado
+
+  /articles/stats/statistics:
+    get:
+      summary: Obtener estadísticas de artículos
+      responses:
+        '200':
+          description: Estadísticas
+
+  /articles/export/csv:
+    get:
+      summary: Exportar artículos a CSV
+      parameters:
+        - in: query
+          name: search
+          schema: { type: string }
+        - in: query
+          name: status
+          schema: { type: string }
+        - in: query
+          name: sortBy
+          schema: { type: string }
+        - in: query
+          name: sortOrder
+          schema: { type: string }
+      responses:
+        '200':
+          description: Archivo CSV generado
